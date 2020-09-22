@@ -52,11 +52,6 @@ var Engine = function (bg) {
 
     //当前级别对象
     this.CurLevel = null;
-    //得分显示区域
-    this.ScroeArea = null;
-    //当前级别区域
-    this.LevelArea = null;
-
     /// **********
     /// 所有的方块
     /// **********
@@ -72,18 +67,14 @@ var Engine = function (bg) {
 Engine.prototype.SetLevel = function (level) {
     if (level > this.LevelCount)//如果级别大于总级数.则完成游戏
     {
-        alert('游戏完成,继续请重新刷新页面!');
+        layer.msg('游戏完成,继续请重新刷新页面!');
         return;
     }
-    var leveltmp = new GameLevel(level + 1); //预加载下级的资源
     var totalscore = this.CurLevel ? this.CurLevel.Score : 0; //原得分
-    this.CurLevelIndex = level;
     this.CurLevel = new GameLevel(level);
     this.CurLevel.Score = totalscore; //得分不变
-    var bgindex = Math.floor(Math.random() * this.Config.ImageUris.length)
-    //this.BackGroundImg.src = this.Config.ImageUris[bgindex];
     this.BackGroundImg.src = "./images/bg.png";
-    this.LevelArea.innerHTML = '等级:' + this.CurLevel.Level;
+    document.getElementById("level").innerHTML = this.CurLevel.Level;
     this.InitImg(); //重置图片
     //this.RefreshGreen();
 
@@ -123,8 +114,8 @@ Engine.prototype.ClickItem = function (evt) {
             //this.RefreshItem(this.CurSelectedItem);
             //this.RefreshItem(item);
             this.CurSelectedItem = null;
-            this.CurLevel.Score += this.CurLevel.BaseImgCount//增加得分
-            this.ScroeArea.innerHTML = '得分:' + this.CurLevel.Score;
+            this.CurLevel.Score += this.CurLevel.BaseImgCount;//增加得分
+            document.getElementById("fraction").innerHTML = this.CurLevel.Score;
             var items = this.GetInlineItems(); //获取还没有被隐藏的点
             if (items.length == 0) { //全部连通
                 this.SetLevel(this.CurLevel.Level + 1); //下一级
@@ -163,6 +154,7 @@ Engine.prototype.InitImg = function () {
     var srcIndex = itemsrcs.length;
     for (var i = 0; i < this.AllItems.length; i++) {
         var item = this.AllItems[i];
+        console.log(   item )
         //随机取图片
         var rndindex = Math.floor(Math.random() * srcIndex);
         srcIndex--;
@@ -221,7 +213,7 @@ Engine.prototype.CreateCanvas = function () {
     this.BackItemContainer.setAttribute('width', this.BackGroundSize.X * this.ItemAreaPer);
     this.BackItemContainer.setAttribute('height', this.BackGroundSize.Y * this.ItemAreaPer);
     var padper = (1 - this.ItemAreaPer) / 2;
-    this.BackItemContainer.setAttribute('style', 'position: absolute;left:' + (padper * 100) + '%;top:' + (padper * 100) + '%;color:red;font-weight:600;');
+    this.BackItemContainer.setAttribute('style', 'position: absolute;left:' + (padper * 100) + '%;top:' + (padper * 100 -10) + '%;color:red;font-weight:600;');
     this.BackItemContainer.setAttribute('onclick', 'javascript:window.llhengine.ClickItem(event);');
     this.BackItemContainer.innerHTML = "您的浏览器不支持Html5,无法进行游戏";
     this.GameBackGrid.appendChild(this.BackItemContainer);
@@ -251,21 +243,6 @@ Engine.prototype.InitEngine = function () {
         if (this.Context) {
             this.InitGrid(); //初始化格子
         }
-    }
-    
-    //计分牌
-    if (!this.ScroeArea) {
-        this.ScroeArea = document.createElement('span');
-        this.ScroeArea.setAttribute('width', '40px');
-        this.ScroeArea.setAttribute('style', 'border: 1px solid red;position: absolute;left:0px;top:0px;height:22px;width:80px;color:blue; font-weight:600;background-color:Gray;');
-        this.GameBackGrid.appendChild(this.ScroeArea);
-    }
-    //计分牌
-    if (!this.LevelArea) {
-        this.LevelArea = document.createElement('span');
-        this.LevelArea.setAttribute('width', '40px');
-        this.LevelArea.setAttribute('style', 'border: 1px solid red;position: absolute;left:' + (this.BackGroundSize.X - 80) + 'px;top:0px;height:22px;width:80px;color:blue; font-weight:600;background-color:Gray;');
-        this.GameBackGrid.appendChild(this.LevelArea);
     }
 }
 //获取还没有隐藏的项

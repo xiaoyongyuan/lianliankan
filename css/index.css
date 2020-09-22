@@ -28,11 +28,50 @@
     height: 60px;
     background-color: #002DFF;
 }
-.class{
+.count{
     position: absolute;
-    left: 40%;
-    bottom:0;
+    left: 37%;
+    top: 758%;
+    width: 25%;
+    height: 9vh;
+    background: linear-gradient(180deg, #FCF47C 0%, #FACA6E 100%);
+    box-shadow: 0px -2px 2px 0px rgba(0,0,0,0.3);
+    border-radius: 19px 19px 12px 12px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
-.btn{
-    position: absolute;
+.level{
+    font-size: 18px;
+    font-weight: bold;
+    color: #FD5800;
+    padding-left: 14px;
+}
+.fraction{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.fraction div:nth-child(1){
+    font-size: 12px;
+    font-weight: bold;
+    color: #24BFED;
+}
+#fraction{
+    display: inline-block;
+    width: 80px;
+    height: 32px;
+    background: #F58A33;
+    box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.2), 0px -2px 1px 0px rgba(255, 255, 255, 0.75);
+    border-radius: 24px 24px 23px 23px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 32px;
+    margin-top: 4px;
+    font-family: STYuanti-SC-Bold, STYuanti-SC;
+}
+.transformation{
+    padding-right: 14px;
+    cursor: pointer;
 }
