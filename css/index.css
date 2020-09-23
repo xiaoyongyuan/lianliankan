@@ -30,10 +30,10 @@
 }
 .count{
     position: absolute;
-    left: 37%;
-    top: 758%;
-    width: 25%;
-    height: 9vh;
+    left: 9rem;
+    top: 8.5rem;
+    width: 7.6rem;
+    height: 1.5rem;
     background: linear-gradient(180deg, #FCF47C 0%, #FACA6E 100%);
     box-shadow: 0px -2px 2px 0px rgba(0,0,0,0.3);
     border-radius: 19px 19px 12px 12px;
@@ -43,7 +43,7 @@
     justify-content: space-between;
 }
 .level{
-    font-size: 18px;
+    font-size: 0.5rem;
     font-weight: bold;
     color: #FD5800;
     padding-left: 14px;
@@ -54,24 +54,33 @@
     align-items: center;
 }
 .fraction div:nth-child(1){
-    font-size: 12px;
+    font-size: 0.25rem;
     font-weight: bold;
     color: #24BFED;
 }
 #fraction{
     display: inline-block;
-    width: 80px;
-    height: 32px;
+    width: 1.6rem;
+    height: 0.8rem;
     background: #F58A33;
     box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.2), 0px -2px 1px 0px rgba(255, 255, 255, 0.75);
     border-radius: 24px 24px 23px 23px;
     color: #ffffff;
     text-align: center;
-    line-height: 32px;
+    line-height: 0.8rem;
+    font-size: 0.5rem;
     margin-top: 4px;
-    font-family: STYuanti-SC-Bold, STYuanti-SC;
 }
 .transformation{
     padding-right: 14px;
+    cursor: pointer;
+}
+#btnRefresh{
+    border: none;
+    width: 0.8rem;
+    height: 0.8rem;
+    background: url("../images/rest.png") no-repeat;
+    background-size: 100% 100%;
+    outline: none;
     cursor: pointer;
 }
